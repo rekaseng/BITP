@@ -1,0 +1,28 @@
+//Labweek5.cpp: using some library functions and more
+// your Task: using selection control structure,
+//ask the user to enter POSITIF value for x and z.
+// RECA SENG (B031910187)
+
+
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x, z;
+	cout << "Enter x>" << flush;
+	cin >> x;
+	cout << "Enter z>" << flush;
+	cin >> z;
+	
+	if (x > 0 && z>0){
+		cout << "Your x is " << x << endl;
+		cout << "Your z is " << z << endl;
+	}else {
+		cout << "Please enter a positive value of x and z" << endl;
+	}
+
+    return 0;
+}
