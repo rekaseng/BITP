@@ -1,0 +1,31 @@
+//write a program with a do while loop that display whether a user enter an integer of even or odd number. 
+//The code should then ask the user if they want to test another number. 
+//The loop should repeat as long as the user enters 'Y' or 'y'.
+#include <iostream>
+using namespace std;
+void testing(){
+	int i, r;
+	cout<<"Insert an integer>"<<flush;
+		cin>>i;
+		r= i%2;
+		if (r!=0){
+		cout<<"It is a odd number"<<endl;
+	}else
+	{
+		cout<<"It is an even number"<<endl;
+     }
+	}
+int main()
+{
+	int i, r;
+	char repeat;
+	testing();
+	cout<<"Do you want to repeat"<<endl;
+	cin>>repeat;
+	do{
+		testing();   
+			cout<<"Do you want to repeat"<<endl;
+	cin>>repeat;
+		
+}while (repeat =='Y' || repeat =='y');
+}
