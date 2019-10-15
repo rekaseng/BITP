@@ -2,8 +2,8 @@
 #include <iostream>
 
 using namespace std;
-int main()
-{
+
+void giveoption() {
 	cout << "Please choose an option \a" << endl;
 	cout << "\n 1. Adult Gym \n 2. Kids Gym \n 3. Senior Citizen Gym \n";
 	int option;
@@ -23,5 +23,30 @@ int main()
 		break;
 	}
 
-    return 0;
 }
+
+int main()
+{
+	cout << "Please choose an option \a" << endl;
+	cout << "\n 1. Adult Gym \n 2. Kids Gym \n 3. Senior Citizen Gym \n";
+	int option;
+	cin >> option;
+	switch (option) {
+	case 1:
+		cout << "You have chosen Adult Gym membership" << endl;
+		break;
+	case 2:
+		cout << "You have chosen Kids Gym membership" << endl;
+		break;
+	case 3:
+		cout << "You have chosen Senior Citizen Gym membership" << endl;
+		break;
+	default:
+		cout << "Please enter number betweeen 1-3" << endl;
+		giveoption();
+		break;
+	}
+
+	return 0;
+}
+
