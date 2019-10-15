@@ -1,0 +1,45 @@
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void giveoption() {
+	cout << "Please choose an option \a" << endl;
+	cout <<setw(5)<< "1. Adult Gym \n";
+	cout << setw(5) << "2. Kids Gym \n";
+	cout << setw(5) << "3. Senior Citizen Gym \n";
+	cout << setw(5) << "4. Exit Menu \n";
+	int option;
+	cin >> option;
+	switch (option) {
+	case 1:
+		cout << "You have chosen Adult Gym membership" << endl;
+		cout << "Price is RM50. " << endl;
+		break;
+	case 2:
+		cout << "You have chosen Kids Gym membership" << endl;
+		cout << "Price is RM20. " << endl;
+		break;
+	case 3:
+		cout << "You have chosen Senior Citizen Gym membership" << endl;
+		cout << "It is Free! " << endl;
+		break;
+	case 4:
+		cout << "Exit Menu" << endl;
+		break;
+	default:
+		cout << "Please enter number betweeen 1-4" << endl;
+		giveoption();
+		break;
+	}
+
+}
+
+
+
+int main()
+{
+	giveoption();
+	return 0;
+}
