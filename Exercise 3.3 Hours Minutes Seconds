@@ -1,0 +1,21 @@
+// 3.3 Exercises Tutorial: Write a program that prompts the user to enter the total time in seconds and displays the hours,
+//minutes and seconds for the total time. Declare two constant integers named SCND_TO_HOUR initialised to 3600 and 
+//SCND_TO_MINUTES initialised to 60.
+// Reca Seng Binti Mohd Fadzil Seng (BITI S1G1)
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int seconds, minutes, hours, countseconds;
+	cout << "Input total time in seconds: ";
+	cin >> seconds;
+	const int SCND_TO_HOUR = 3600;
+	const int SCND_TO_MINUTES = 60;
+	hours = seconds / SCND_TO_HOUR;
+	minutes = seconds / SCND_TO_MINUTES - hours * SCND_TO_MINUTES;
+	countseconds = seconds - hours * SCND_TO_HOUR-minutes* SCND_TO_MINUTES;
+	cout << seconds << " seconds are equal to " << hours << " hours, " << minutes << " minutes and " << countseconds << " seconds.";
+	return 0;
+	
+}
