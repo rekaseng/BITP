@@ -1,0 +1,29 @@
+// Write a function (by using pass by value concept) named swap with 2 parameters of type float and display the 
+//swapped value. In function main display the original value and call function swap.
+
+#include <iostream>
+using namespace std;
+void swap(float a, float b);
+int main() {
+	float a, b;
+	cout << "Enter the value of a and b >";
+	cin >> a >> b;
+	swap(a, b);
+
+	cout << "The original value of a in function main is " << a << endl;
+	cout << "The original value of b in function main is " << b << endl;
+
+	return 0;
+}
+
+void swap(float a, float b)
+{
+	cout << "The value of a entered is " << a << endl;
+	cout << "The value of b entered is " << b << endl;
+
+	float temp = a;
+	a = b;
+	b = temp;
+	cout << "The value of a after swapping is " << a << endl;
+	cout << "The value of b after swapping is " << b << endl;
+}
