@@ -1,0 +1,153 @@
+// Lowest Score Drop
+/*
+-Write a program that calculates the average of a group of test scores, where the lowest score in the group is dropped.
+ It should use the following functions:
+-void getScore () should ask the user for a test score, store it in a reference parameter variable, and validate that 
+it is not lower than 0 or higher than 100. This function should be called by main once for each of the five scores to be entered.
+ -void calcAverage () should calculate and display the average of the four highest scores. This function should be called 
+just once by main and should be passed the five scores.
+-int findLowest () should find and return the lowest of the five scores passed to it. It should be called by calcAverage, 
+which uses the function to determine which one of the five scores to drop.
+*/
+
+/* 
+Step 1: Analysis
+Input: Five scores(testScore1, testScore2, testScore3, testScore4, testScore5)
+Process:
+1. Accept five scores and store them in reference parameter variable.
+2. Validate each of the five scores should not be less than 0 or more than 100.
+3. Find and return the lowest of the five scores.
+4. Calculate and display the average of the four highest scores.
+Output: Average of the four highest scores, average.
+*/
+
+/*
+Step 2: Algorithm
+i) Pseudocode of the main module of the lowest score drop 
+ main ()
+	1. Start
+	2. Call function  getScore ().
+	3. Call function calcAverage().
+	4. End.
+
+ii) Pseudocode of the submodule to input five scores
+ getScore ()
+	1. Start.
+	2. Accept five scores and store them in reference parameter variable, (int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5)
+	3. Validate each of the five scores should not be less than 0 or more than 100.
+	4. End.
+
+iii) Pseudocode of the submodule to find the lowest score among the five scores
+ findLowest()
+	1. Start.
+	2. Find and return the lowest of the five scores.
+	3. End.
+
+iv) Pseudocode of the submodule to find the average of the four highest scores
+	1. Start.
+	2. Call findLowest().
+	3. Calculate the average of the four highest scores
+	4. Display average.
+	5.End
+*/
+
+//Step 3: Code C++
+
+#include <iostream>
+using namespace std;
+//prototypes for input 5 scores
+void getScore(int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5);
+//prototypes for calculating 4 highest scores
+void calcAverage(int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5);
+//prototypes for finding the lowest score among five input scores
+int findLowest(int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5);
+
+int main()
+{
+	int score1, score2, score3, score4, score5; // naming the variable for the reference parameter in main
+	getScore(score1, score2, score3, score4, score5); //the variables defined will store the value of the reference parameter
+	calcAverage(score1, score2, score3, score4, score5); //the variables defined should be used to find average
+	return 0;
+}
+
+// validate if each entered value is less than 0 or more than 100
+
+void getScore(int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5)
+{
+	cout << "Insert test score 1>";
+	cin >> testScore1;
+	while (testScore1 < 0 || testScore1 >100)
+	{
+		cout << "Insert a valid test score>";
+		cin >> testScore1;
+	}
+	cout << "Insert test score 2>";
+	cin >> testScore2;
+	while (testScore2 < 0 || testScore2 >100)
+	{
+		cout << "Insert a valid test score>";
+		cin >> testScore2;
+	}
+	cout << "Insert test score 3>";
+	cin >> testScore3;
+	while (testScore3 < 0 || testScore3 >100)
+	{
+		cout << "Insert a test score 3>";
+		cin >> testScore3;
+	}
+	cout << "Insert test score 4>";
+	cin >> testScore4;
+	while (testScore4 < 0 || testScore4 >100)
+	{
+		cout << "Insert a valid test score>";
+		cin >> testScore4;
+	}
+	cout << "Insert test score 5>";
+	cin >> testScore5;
+	while (testScore5 < 0 || testScore5 >100)
+	{
+		cout << "Insert a valid test score>";
+		cin >> testScore5;
+	}
+}
+
+//calculate the average of four highest scores only
+
+void calcAverage(int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5)
+{
+	findLowest(testScore1, testScore2, testScore3, testScore4, testScore5);
+	int total = testScore1 + testScore2 + testScore3 + testScore4 + testScore5;
+	int average = total / 4;
+	cout << "The average is " << average;
+}
+
+//find the lowest scores, put it to zero and return so it will not be counted in the average
+
+int findLowest(int& testScore1, int& testScore2, int& testScore3, int& testScore4, int& testScore5)
+{
+	if (testScore1 < testScore2 && testScore1 < testScore3 && testScore1 < testScore4 && testScore1 < testScore5)
+	{
+		testScore1 = 0;
+		return testScore1;
+	}
+	else if (testScore2 < testScore1 && testScore2 < testScore3 && testScore2 < testScore4 && testScore2 < testScore5)
+	{
+		testScore2 = 0;
+		return testScore2;
+	}
+	else if (testScore3 < testScore1 && testScore3 < testScore2 && testScore3 < testScore4 && testScore3 < testScore5)
+	{
+		testScore3 = 0;
+		return testScore3;
+	}
+	else if (testScore4 < testScore1 && testScore4 < testScore3 && testScore4 < testScore2 && testScore4 < testScore5)
+	{
+		testScore4 = 0;
+		return testScore4;
+	}
+	else
+	{
+		testScore5 = 0;
+		return testScore5;
+	}
+}
