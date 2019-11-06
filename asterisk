@@ -1,0 +1,64 @@
+/*
+17. Sales Bar Chart
+Write a program that asks the user to enter today’s sales for five stores. The program
+should then display a bar graph comparing each store’s sales. Create each bar in the bar
+graph by displaying a row of asterisks. Each asterisk should represent $100 of sales.
+Here is an example of the program’s output.
+Enter today's sales for store 1: 1000 [Enter]
+Enter today's sales for store 2: 1200 [Enter]
+Enter today's sales for store 3: 1800 [Enter]
+Enter today's sales for store 4: 800 [Enter]
+Enter today's sales for store 5: 1900 [Enter]
+SALES BAR CHART
+(Each * = $100)
+Store 1: **********
+Store 2: ************
+Store 3: ******************
+Store 4: ********
+Store 5: *******************
+*/
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int today_sales1, today_sales2, today_sales3, today_sales4, today_sales5;
+	int number_asterisk1, number_asterisk2, number_asterisk3, number_asterisk4, number_asterisk5;
+	cout << "Enter today sales for store 1: ";
+	cin >> today_sales1;
+	cout << "Enter today sales for store 2: ";
+	cin >> today_sales2;
+	cout << "Enter today sales for store 3: ";
+	cin >> today_sales3;
+	cout << "Enter today sales for store 4: ";
+	cin >> today_sales4;
+	cout << "Enter today sales for store 5: ";
+	cin >> today_sales5;
+
+	number_asterisk1 = today_sales1 / 100;
+	number_asterisk2 = today_sales2 / 100;
+	number_asterisk3 = today_sales3 / 100;
+	number_asterisk4 = today_sales4 / 100;
+	number_asterisk5 = today_sales5 / 100;
+
+
+	cout << "SALES BAR CHART \n" << "(Each * = $100)\n";
+
+	cout << "Store 1: ";
+		for (int i = 0; i < number_asterisk1; i++)
+			cout << "*";
+	cout << "\nStore 2:";
+	for (int i = 0; i < number_asterisk2; i++)
+		cout << "*" ;
+	cout << "\nStore 3:";
+	for (int i = 0; i < number_asterisk3; i++)
+		cout << "*";
+	cout << "\nStore 4:";
+	for (int i = 0; i < number_asterisk4; i++)
+		cout << "*" ;
+	cout << "\nStore 5:";
+	for (int i = 0; i < number_asterisk5; i++)
+		cout << "*";
+
+	return 0;
+}
