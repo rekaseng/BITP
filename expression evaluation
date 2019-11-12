@@ -1,0 +1,22 @@
+#include "stdafx.h"
+#include <iostream>
+#include<cmath>
+#define PI 3.142
+using namespace std;
+
+int main()
+{
+	double j = 1.5, circle;
+	circle = PI * pow(j, 2);
+	
+	cout<<"\n \n The area of this circle is "<< circle
+		<<" \n\n";
+	cout << "abs(9.5) is " << abs(9.5) << endl; // answer is 9.5
+	cout << "abs(-9.5) is " << abs(-9.5) << endl; // answer is 9.5
+	cout << "floor(9.5) is " <<floor(9.5) << endl; // answer is 9
+	cout << "floor(-9.5) is " << floor(-9.5) << endl;  // answer is -10
+	cout << "ceil(8.5) is " << ceil(8.5) << endl;  // answer is 9
+	cout << "ceil(-8.5) is " << ceil(-8.5) << endl; // answer is -8
+	cout << "sqrt(pow(6,4)) is " << sqrt(pow(6,4)) << endl; // answer is 36
+	return 0; 
+}
