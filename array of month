@@ -1,0 +1,33 @@
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+
+int main()
+{
+	//array
+	//declare an array name month with 12 elements
+	//set the number of days for each month eg: [0]=31, month [2] =28,...
+	//display them
+
+	int month[12];
+	month[0] = 31; //jan
+	month[1] = 28; //feb
+	month[2] = 31; //mar
+	month[3] = 30; //apr
+	month[4] = 31; //may
+	month[5] = 30; //june
+	month[6] = 31; //july
+	month[7] = 31; //aug
+	month[8] = 30; //sep
+	month[9] = 31; //oct
+	month[10] = 30; //nov
+	month[11] = 31; //dec
+	//{ 31,28,31,30,31,30,31,31,30,31, 30,31 };
+	for (int i = 0; i < 12; i++)
+		cout << month[i+1] << endl;
+	
+    return 0;
+}
