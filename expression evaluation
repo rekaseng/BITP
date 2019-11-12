@@ -6,17 +6,22 @@ using namespace std;
 
 int main()
 {
+	int ans(0); // declaration-new way of it- check this with other compiler
+	int ans_{0}; // declaration-new way of it- check this with other compiler
 	double j = 1.5, circle;
 	circle = PI * pow(j, 2);
 	
+	cout << "The output of ans(0) is " << ans<<endl;
+	cout << "The output of ans{0} is " << ans<<endl; //not supported by cpp shell
 	cout<<"\n \n The area of this circle is "<< circle
 		<<" \n\n";
-	cout << "abs(9.5) is " << abs(9.5) << endl; // answer is 9.5
-	cout << "abs(-9.5) is " << abs(-9.5) << endl; // answer is 9.5
-	cout << "floor(9.5) is " <<floor(9.5) << endl; // answer is 9
-	cout << "floor(-9.5) is " << floor(-9.5) << endl;  // answer is -10
-	cout << "ceil(8.5) is " << ceil(8.5) << endl;  // answer is 9
-	cout << "ceil(-8.5) is " << ceil(-8.5) << endl; // answer is -8
-	cout << "sqrt(pow(6,4)) is " << sqrt(pow(6,4)) << endl; // answer is 36
-	return 0; 
+	cout << "abs(9.5) is " << abs(9.5) << endl;
+	cout << "abs(-9.5) is " << abs(-9.5) << endl;
+	cout << "floor(9.5) is " <<floor(9.5) << endl;
+	cout << "floor(-9.5) is " << floor(-9.5) << endl;
+	cout << "ceil(8.5) is " << ceil(8.5) << endl;
+	cout << "ceil(-8.5) is " << ceil(-8.5) << endl;
+	cout << "sqrt(pow(6,4)) is " << sqrt(pow(6,4)) << endl;
+	return 0;
 }
+
