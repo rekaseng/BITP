@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cstdlib>
+#define g 5
+using namespace std;
+int main()
+{
+	int i;
+	double largest, ranNumbers[g];
+	cout << "5 numbers are randonly generated are ";
+	for (i = 0; i< g; i++)
+	{
+		ranNumbers[i] = rand();
+		cout << ranNumbers[i] << " ";
+	}
+	largest = ranNumbers[0];
+
+	for (i = 1; i<g; i++)
+	{
+		if (largest < ranNumbers[i])
+			largest = ranNumbers[i];
+	}
+
+	cout << "\n The largest random number is : " << largest << endl;
+
+	return 0;
+}
