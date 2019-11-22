@@ -1,0 +1,50 @@
+//print individual element of an 2-d array
+//passing each row in an array and calculate the average for each row
+//passing the whole array and do the addition for each element in an array
+// 9.4 Self-review questions 3
+
+#include <iostream>
+void printElement(int);
+void average(const int quantityRow[], int);
+void updateQuantity(int newquantity[][3]);
+using namespace std;
+void main()
+{
+	int quantity[5][3] = { {30,25,18}, {16,21,51}, {19,42,25},{35,26,38},{16,33,22} };
+	cout << "\n\n The original elements in quantity : \n";
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 3; j++)
+			printElement(quantity[i][j]);
+
+	cout << endl;
+
+	for (int i = 0; i < 5; i++) //run add 3 times function 5 times since 5 row
+		average(quantity[i], i);
+
+	updateQuantity(quantity);
+}
+
+void printElement(int quant)
+{
+	cout << " " << quant;
+}
+
+void average(const int quantityRow[], int row)
+{
+	int total = 0, ave;
+	for (int i = 0; i < 3; i++) //quantity need to add 3 times since 3 columns in a row
+		total += quantityRow[i];
+	ave = total / 3;
+
+	cout << "The average value of the elements in row " << row + 1 << " : " << ave << endl;
+}
+void updateQuantity(int newquantity[][3])
+{
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 3; j++)
+		{
+			newquantity[i][j] = newquantity[i][j] + 20;
+			cout << newquantity[i][j]<<" ";
+		}
+			
+}
