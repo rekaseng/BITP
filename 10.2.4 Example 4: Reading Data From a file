@@ -1,0 +1,61 @@
+// Reading data from a file names studentMarks.txt
+/*
+1001 Aina 89 90.5 80.5 70 80.61
+1002 Asmah 45.90 88.4 70.5 80.5 70.5
+1003 Adam 88.30 89.2 80 75.5 90.5
+1010 Zaharah 55.90 68.50 70.5 60 70.5
+1011 Zurina 90.6 85.60 60 70.6 80.5
+
+*/
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <iomanip>
+using namespace std;
+int main() {
+	char name[25], grade;
+	char id[5];
+	float m[5];
+	ifstream inputFile("studentMarks.txt");
+	ofstream outputFile("result.txt");
+
+	if (!inputFile)
+	{
+		cerr<< "File could not be opened \n"; 
+		exit(1);
+	}
+
+	if (!outputFile)
+	{
+		cerr << "File could not be opened \n";
+		exit(1);
+	}
+
+	while (inputFile >> id >> name >> m[0] >> m[1] >> m[2] >> m[3] >> m[4])
+	{
+		outputFile << id << " " << name;
+		for (int i = 0; i < 5; i++)
+		{
+			if (m[i] >= 80 && m[i] <= 100)
+				grade = 'A';
+			else if (m[i] >= 60 && m[i] < 80)
+				grade = 'B';
+			else if (m[i] >= 50 && m[i] < 60)
+				grade = 'C';
+			else if (m[i] >= 40 && m[i] < 50)
+				grade = 'D';
+			else
+				grade = 'F';
+
+			outputFile << " " << grade;
+		}
+		outputFile << endl;
+	} 
+	cout << "Please refer to the file result\n";
+
+
+	return 0;
+}
