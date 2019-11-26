@@ -1,0 +1,42 @@
+// Reading data from a file names studentMarks.txt
+/*
+1001 Aina 89 90.5 80.5 70 80.61
+1002 Asmah 45.90 88.4 70.5 80.5 70.5
+1003 Adam 88.30 89.2 80 75.5 90.5
+1010 Zaharah 55.90 68.50 70.5 60 70.5
+1011 Zurina 90.6 85.60 60 70.6 80.5
+*/
+
+
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <iomanip>
+using namespace std;
+int main() {
+	char name[25];
+	char id[5];
+	float m1, m2, m3, m4, m5;
+	ifstream inputFile("studentMarks.txt", ios::in);
+	if (!inputFile)
+	{
+		cerr<< "File could not be opened \n"; 
+		exit(1);
+	}
+	cout << setw(10) << "Stud ID" << setw(10) << "Name"
+		<< setw(10) << "Subject 1" << setw(10) << "Subject 2"
+		<< setw(10) << "Subject 3" << setw(10) << "Subject 4"
+		<< setw(10) << "Subject 5" << endl << endl;
+
+	while (inputFile >> id >> name >> m1 >> m2 >> m3 >> m4 >> m5)
+	{
+		cout << setw(10) << id << setw(10) << name
+			<< setw(10) << m1 << setw(10) << m2
+			<< setw(10) << m3 << setw(10) << m4
+			<< setw(10) << m5 << endl;
+	}
+	cout << endl;
+
+	return 0;
+}
