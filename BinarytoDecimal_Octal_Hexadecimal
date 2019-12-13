@@ -1,0 +1,98 @@
+#include <iostream>
+#include <cmath>
+int toDecimal(long long int, int);
+void toOctal(long long int, int);
+void toHexadecimal(long long int, int);
+using namespace std;
+int main()
+{
+int d, b;
+int decimal;
+long long int integer;
+cout << "How many digits of integer: ";
+cin >> d;
+cout << "The integer with binary expansion: ";
+cin >> integer;
+cout << "Convert to base expansion: ";
+cin >> b;
+d--; // the k value in the array starts from 0 not 1
+if (b == 8)
+{
+toOctal(integer, d);
+} else if (
+b
+== 10)
+{
+cout << "\nThe integer in decimal expansion: ";
+decimal = toDecimal(integer, d);
+cout << decimal << endl;
+}
+else if (b == 16)
+toHexadecimal(integer, d);
+else
+cout << "Please enter 10,8,or 16 for base conversion only.";
+return 0;
+}
+// function to convert from binary expansion to octal expansion
+void toOctal(long long int integer, int d)
+{
+int q = toDecimal(integer,d); // return value from calling toDecimal function
+int k = 0;
+int a[30]; //array to store remainder
+while (q != 0)
+{
+a[k] = q % 8;
+q = q / 8;
+k++;
+}
+cout << "\nThe integer in octal expansion: ";
+for (k = k - 1; k >= 0; k--)
+{
+cout << a[k];
+}
+cout << endl;
+}
+// function to convert from binary expansion to decimal expansion
+int toDecimal(long long int integer, int d)
+{
+int q = integer;
+int c = 0; //separate each digit of the integer
+int a = 0;
+while (d >= 0)
+{
+c = q / pow(10, d);
+a = a + (c * pow(2, d));
+q = q - (c * pow(10, d));
+d--;
+} return a;
+} // function to convert from binary expansion to hexadecimal expansion
+void toHexadecimal(long long int integer, int d)
+{
+int q = toDecimal(integer, d);
+int k = 0;
+int a[30]; //array to store remainder
+while (q != 0)
+{
+a[k] = q % 16;
+q = q / 16;
+k++;
+} cout << "\nThe integer in hexadecimal expansion: ";
+for (k = k - 1; k >= 0; k--)
+{
+if (a[k] == 15)
+cout << "F";
+else if (a[k] == 14)
+cout << "E";
+else if (a[k] == 13)
+cout << "D";
+else if (a[k] == 12)
+cout << "C";
+else if (a[k] == 11)
+cout << "B";
+else if (a[k] == 10)
+cout << "A";
+else
+cout << a[k];
+}
+cout << endl;
+}
