@@ -1,0 +1,153 @@
+//myprogrammingtechniqueproject
+
+Source Code:
+#include <iostream>
+#include <iomanip> //use setw() to align the data
+#include <fstream> //for ifstream & ofstream
+void student_Response(int[], int[], char[], char[], char[], char[], char[],int); //function prototype for student response
+double numeric_Response(char question, int); //function prototype for the numeric value's response of each question
+void examine_Response(char RESPONSE); //function prototype to examine if response for question is valid
+void display_Average(double average, int); //function prototype to output average for each question
+using namespace std;
+int main()
+{
+int number_of_participants; //total number of participants in the instructor's evaluation
+int instructor_number[100]; //array to read instructor number from each student
+int course_code[100]; //array to read course code from each student
+char question_one[100], question_two[100], question_three[100], question_four[100], question_five[100]; //array to read response for each question
+int numeric_one[100], numeric_two[100], numeric_three[100], numeric_four[100], numeric_five[100]; //array to store response in numeric value
+double question1 = 0.00, question2 = 0.00, question3 = 0.00, question4 = 0.00, question5 = 0.00; //sum for each question
+double instructor_average;
+cout << "2019 COURSE/INTRUCTOR EVALUATION FORM " << endl;
+cout << "How many participants?";
+cin >> number_of_participants;
+cout << endl;
+//loop for storing instuctor no., course code, and response for each question
+student_Response(instructor_number, course_code, question_one, question_two, question_three,
+question_four, question_five, number_of_participants);
+//create EvaluationFormRecord.txt file to store data for the above loop
+ofstream outputFile("EvaluationFormRecord.txt", ios::out);
+if (!outputFile)
+{
+cerr << "File could not be opened \n";
+exit(1);
+}
+for (int i = 0; i < number_of_participants; i++)
+{
+outputFile << instructor_number[i] << setw(5) << course_code[i] << setw(5)
+<< question_one[i] << setw(3)
+<< question_two[i] << setw(3) << question_three[i] << setw(3) <<
+question_four[i] << setw(3)
+<< question_five[i] << setw(3) << endl;
+}
+//read data from EvaluationFormRecord.txt file to calculate average of each question
+ifstream inputFile("EvaluationFormRecord.txt", ios::in);
+if (!inputFile)
+{
+cerr << "File could not be opened \n";
+exit(1);
+}
+int k = 0;
+while (inputFile >> instructor_number[k] >> course_code[k] >> question_one[k] >>
+question_two[k] >> question_three[k] >> question_four[k] >> question_five[k])
+{
+k++;
+}
+//for loop to calculate sum of the numeric value's response of each question
+for (int k = 0; k < number_of_participants; k++)
+{
+question1 = question1 + numeric_Response(question_one[k],
+number_of_participants);
+question2 = question2 + numeric_Response(question_two[k],
+number_of_participants);
+question3 = question3 + numeric_Response(question_three[k],
+number_of_participants);
+question4 = question4 + numeric_Response(question_four[k],
+number_of_participants);
+question5 = question5 + numeric_Response(question_five[k],
+number_of_participants);
+}
+//compute average for each questions
+double average_of_Q1 = question1 / number_of_participants;
+double average_of_Q2 = question2 / number_of_participants;
+double average_of_Q3 = question3 / number_of_participants;
+double average_of_Q4 = question4 / number_of_participants;
+double average_of_Q5 = question5 / number_of_participants;
+cout << endl << endl;
+//calculate the instructor average
+instructor_average = (0.15 * average_of_Q1) + (0.23 * average_of_Q2) + (0.08 *
+average_of_Q3) + (0.32 * average_of_Q4) + (0.22 * average_of_Q5);
+//output the summary
+cout << "COURSE/INSTRUCTOR EVALUATION SUMMARY" << endl << endl << endl;
+cout << "INSTRUCTION NUMBER: " << instructor_number[0] << endl << endl;
+cout << "COURSE NUMBER: " << course_code[0] << endl << endl;
+cout << "NUMBER OF PARTICIPANTS: " << number_of_participants << endl << endl;
+cout << "AVERAGES:" << endl << endl;
+display_Average(average_of_Q1, 1);
+display_Average(average_of_Q2, 2);
+display_Average(average_of_Q3, 3);
+display_Average(average_of_Q4, 4 );
+display_Average(average_of_Q5, 5);
+cout << "INSTRUCTOR AVERAGE:" << setw(5) << fixed << showpoint << setprecision(2)
+<< instructor_average<<endl;
+return 0;
+}
+//function to receive response from students
+void student_Response(int instructor_number[], int course_code[], char question_one[], char question_two[], char question_three[],
+char question_four[], char question_five[], int number_of_participants)
+{
+for (int i = 0; i < number_of_participants; i++)
+{
+cout << "Instructor Number(4-digit code): ";
+cin >> instructor_number[i];
+if (instructor_number[i] < 1000 && instructor_number[i]>9999)
+exit(1);
+cout << "Course_code(3-digit code): ";
+cin >> course_code[i];
+if (instructor_number[i] < 100 && instructor_number[i]>999)
+exit(1);
+cout << "Knowledge of subject matter (E,G,A,P or U): ";
+cin >> question_one[i];
+examine_Response(question_one[i]);
+cout << "Organization (E,G,A,P or U): ";
+cin >> question_two[i];
+examine_Response(question_two[i]);
+cout << "Helpfulness (E,G,A,P or U): ";
+cin >> question_three[i];
+examine_Response(question_three[i]);
+cout << "Effectiveness (E,G,A,P or U): ";
+cin >> question_four[i];
+examine_Response(question_four[i]);
+cout << "Punctuality (E,G,A,P or U): ";
+cin >> question_five[i];
+examine_Response(question_five[i]);
+cout << endl;
+}
+}
+//function to calculate sum for each question
+double numeric_Response(char question, int number_of_participants)
+{
+double sum = 0.00;
+if (question == 'E')
+sum = sum + 4.00;
+else if (question == 'G')
+sum = sum + 3.00;
+else if (question == 'A')
+sum = sum + 2.00;
+else if (question == 'P')
+sum = sum + 1.00;
+else
+sum = sum + 0.00;
+return sum;
+}
+// function to examine response
+void examine_Response(char RESPONSE)
+{
+if (RESPONSE != 'E' && RESPONSE != 'G' && RESPONSE != 'A' && RESPONSE != 'P' && RESPONSE != 'U')
+exit(1);
+}
+//function to display average for each question
+void display_Average(double average, int i)
+{
+cout << "QUESTION "<<i<< setw(10) << fixed << showpoint << setprecision(2) << average << endl << endl;
+}
