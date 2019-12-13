@@ -1,0 +1,42 @@
+#include <iostream>
+void baseConversion(int, int);
+using namespace std;
+int main()
+{
+int integer, b;
+cout << "The integer with decimal expansion: ";
+cin >> integer;
+cout << "Convert to base expansion: ";
+cin >> b;
+baseConversion(integer, b);
+return 0;
+} void baseConversion(int integer, int b)
+{
+int q = integer;
+int k = 0;
+int a[30]; //array to store remainder
+while (q != 0)
+{
+a[k] = q % b;
+q = q / b;
+k++;
+}
+cout << "\nThe integer in base " << b << " expansion is: ";
+for (k = k - 1; k >= 0; k--)
+{
+if (a[k] == 15)
+cout << "F";
+else if (a[k] == 14)
+cout << "E";
+else if (a[k] == 13)
+cout << "D";
+else if (a[k] == 12)
+cout << "C";
+else if (a[k] == 11)
+cout << "B";
+else if (a[k] == 10)
+cout << "A";
+else
+cout << a[k];
+} cout << endl;
+}
