@@ -1,0 +1,97 @@
+#include<iostream>
+#include<string.h>
+void toBinary(char a[]);
+void toOctal(char a[]);
+int toDecimal(char a[]);
+using namespace std;
+int main()
+{
+char a[200];
+int b;
+int d;
+cout << "How many digits of integer: ";
+cin >> d;
+cout << "The integer with hexadecimal expansion: ";
+for (int i=0; i<d; i++ )
+cin >> a[i];
+cout << "Convert to base expansion: ";
+cin >> b;
+if (b == 2)
+toBinary(a);
+else if (b == 8)
+{
+toOctal(a);
+} else if (
+b
+== 10)
+{
+cout << "\nThe integer in decimal expansion: ";
+cout << toDecimal(a) << endl;
+} else
+cout << "Please enter 2,8,or 10 for base conversion only.";
+return 0;
+}
+// function to convert from hexadecimal expansion to binary expansion
+void toBinary(char a[])
+{
+int q = toDecimal(a); // return value from calling toDecimal function
+int k = 0;
+int r[100]; //array to store remainder
+while (q != 0)
+{
+r[k] = q % 2;
+q = q / 2;
+k++;
+} cout << "\nThe integer in binary expansion: ";
+for (k = k - 1; k >= 0; k--)
+{
+cout << r[k];
+} cout << endl;
+}
+// function to convert from hexadecimal expansion to octal expansion
+void toOctal(char a[])
+{
+int q = toDecimal(a); // return value from calling toDecimal function
+int k = 0;
+int r[50]; //array to store remainder
+while (q != 0)
+{
+r[k] = q % 8;
+q = q / 8;
+k++;
+} cout << "\nThe integer in binary expansion: ";
+for (k = k - 1; k >= 0; k--)
+{
+cout << r[k];
+} cout << endl;
+}
+//Function to convert hexadecimal to decimal
+int toDecimal(char a[])
+{
+int len = strlen(a);
+// Initializing base value to 1, ie 16 power 0
+int base = 1;
+int dec_val = 0;
+//Extracting characters as digits from last character
+for (int i = len - 1; i >= 0; i--)
+{
+// if character lies in '0'-'9', converting
+// it to integral 0-9 by subtracting 48 from
+//ASCII value
+if (a[i] >= '0' && a[i] <= '9')
+{
+dec_val += (a[i] - 48) * base;
+//incrementing base by power
+base = base * 16;
+} //if character lies in '
+A'-'F', converting
+//it to integral 10-15 by subtracting 55
+//from ASCII value
+if (a[i] >= 'A' && a[i] <= 'F')
+{
+dec_val += (a[i] - 55) * base;
+//incrementing base by power
+base = base * 16;
+}
+} return dec_val;
+}
