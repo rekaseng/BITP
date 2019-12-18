@@ -1,0 +1,54 @@
+#include <iostream>
+#include<iomanip>
+#include<string>
+
+using namespace std;
+
+struct Pollutiondata
+{
+	char areaname[20];
+	int areaid;
+	double pollutionreading[5];
+	double totalreading;
+};
+
+int main()
+{
+	Pollutiondata area;
+	cout << "This program is to collect pollution data of specific area." << endl;
+	cout <<endl<< "Enter area name:" << endl;
+	int k = 0;
+	for (int i = 0; i < 20; i++)
+	{
+		cin >> area.areaname[i];
+	}
+	cout << endl;
+	cout <<"Enter area id:";
+	cin >> area.areaid;
+	area.totalreading = 0.00;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Pollution Reading " << i + 1<<" : ";
+		cin >> area.pollutionreading[i];
+		area.totalreading = area.totalreading + area.pollutionreading[i];
+	}
+	
+	cout << endl;
+	cout << "The area's name is ";
+	for (int i = 0; i < 20; i++)
+	{
+		cout<< area.areaname[i];
+	}
+	cout << endl << "The area's id is ";
+	cout << area.areaid;
+	cout << endl << "The five pollution readings: ";
+	for (int i = 0; i < 5; i++)
+	{
+		cout << endl << "Reading " << i + 1 << " : ";
+		cout<< area.pollutionreading[i];
+	}
+	cout << endl << "The total of five pollution readings: ";
+	cout << area.totalreading << endl;
+
+	return 0;
+}
