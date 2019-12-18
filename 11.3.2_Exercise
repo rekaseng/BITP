@@ -1,0 +1,52 @@
+//Write a program that reads from a file all the details of students in a class of 20. Use an array of structure to store all 
+//the data and then display them on the screen
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#define SIZE 5
+
+using namespace std;
+struct Class 
+{
+	int studentid;
+	string name;
+	double gpa;
+};
+int main()
+{
+	Class mawar[SIZE];
+	
+	ifstream inFile("Studentdetails.txt.txt", ios::in);
+
+	if (!inFile)
+	{
+		cerr<< "File cannot be opened \n";
+		exit(1);
+
+	}
+	int i = 0;
+	while (inFile >> mawar[i].studentid >> mawar[i].name >> mawar[i].gpa)
+	{
+		i++;
+	}
+
+	cout << "Student ID" << setw(13) << "Name" << setw(10) << "GPA" << endl;
+	for (i = 0; i < SIZE; i++)
+	{
+		cout << mawar[i].studentid << setw(15) << mawar[i].name << setw(10)<< mawar[i].gpa << endl;
+	}
+	
+	return 0;
+
+}
+
+/*
+Text File(Studentdetails.txt):
+31910187 RecaSeng 4.00
+31910119 KrystalYong 4.00
+31910447 TengXian 4.00
+31910353 XueWing 4.00
+31910441 Wenni 4.00
+*/
