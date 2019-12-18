@@ -1,0 +1,21 @@
+//Declare an array and uses a pointer to display the contents of an array. Reverse the numbers in the array
+//and display the content
+#include <iostream>
+using namespace std;
+int main()
+{
+	int number[8] = { 5,10,15,20,25,30,35,40 };
+	int* pointer = number;
+	cout << "The numbers in set are: " << endl;
+	for (int i = 0; i < 8; i++)
+	{
+		cout << pointer[i] << " ";
+	}
+	cout << "\nThe numbers in set backward are: " << endl;
+	for (int i = 7; i >= 0; i--)
+	{
+		cout << pointer[i] << " ";
+	}
+	cout << endl;
+	return 0;
+}
