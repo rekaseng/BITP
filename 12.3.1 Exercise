@@ -1,0 +1,67 @@
+#include <iostream>
+#include <iomanip>
+void getInput(int&, int&, char&);
+int calculate(int&, int&, char&);
+void displayResult(int&, int&, char&, int);
+using namespace std;
+int main()
+{
+	int num1,num2, result; 
+	char choice;
+	cout << setw(13) << "Menu" << endl;
+	cout << setw(13) << "****" << endl;
+	cout<< "+: Add" << endl;
+	cout << "-: Subtract" << endl;
+	cout << "*: Multiply" << endl;
+	cout << "/: Divide" << endl;
+	cout << "x: Exit" << endl;
+	getInput(num1, num2, choice);
+	result = calculate(num1, num2, choice);
+	displayResult(num1, num2, choice, result);
+	cout << endl<<endl;
+	while (choice != 'x')
+	{
+		getInput(num1, num2, choice);
+		result = calculate(num1, num2, choice);
+		displayResult(num1, num2, choice, result);
+		cout << endl<<endl;
+	}
+	return 0;
+
+}
+void getInput(int& num1, int&num2, char& choice)
+{
+	int* number1;
+	number1 = &num1;
+	int* number2;
+	number2 = &num2;
+	char* choicealso;
+	choicealso = &choice;
+	cout << "Enter your choice :";
+	cin >> *choicealso;
+	cout << "Enter first number :";
+	cin >> *number1;
+	cout << "Enter second number :";
+	cin >> *number2;
+}
+int calculate(int& num1, int& num2, char& choice)
+{
+	int result;
+	if (choice == '+')
+		result = num1 + num2;
+	else if (choice == '-')
+		result = num1 - num2;
+	else if (choice == '*')
+		result = num1 * num2;
+	else if (choice == '/')
+		result = num1 / num2;
+	else if (choice == 'x')
+		exit(1);
+	else
+		cout << "Please enter a valid data";
+	return result;
+}
+void displayResult(int& num1, int& num2, char& choice, int result)
+{
+	cout << num1 << choice << num2 << "=" << result;
+}
