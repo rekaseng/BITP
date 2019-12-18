@@ -1,0 +1,60 @@
+/*
+//Write a program that reads from a file all the details of students in a class of 20. Use an array of structure to store all 
+//the data and then display them on the screen
+//Enhance the program written for the previous question by adding an array into the structure in order to store five subjects marks
+// for each student, display all the student's data on the screen. Therefore, it will become an array of structures, which in turn 
+//contains an array
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#define SIZE 5
+
+using namespace std;
+struct Class
+{
+	int studentid;
+	string name;
+	double gpa;
+	int subjects[5];
+};
+int main()
+{
+	Class mawar[SIZE];
+
+	ifstream inFile("Studentdetails.txt.txt", ios::in);
+
+	if (!inFile)
+	{
+		cerr << "File cannot be opened \n";
+		exit(1);
+
+	}
+	int i = 0;
+	while (inFile >> mawar[i].studentid >> mawar[i].name >> mawar[i].gpa >> mawar[i].subjects[0]>>
+		mawar[i].subjects[1]>> mawar[i].subjects[2] >> mawar[i].subjects[3] >> mawar[i].subjects[4])
+	{
+		i++;
+	}
+
+	cout << "Student ID" << setw(13) << "Name" << setw(10) << "GPA" <<setw(10)<<"Marks1" << setw(10) << "Marks2"
+		<< setw(10) << "Marks3" << setw(10) << "Marks4" << setw(10) << "Marks5"<<endl;
+	for (i = 0; i < SIZE; i++)
+	{
+		cout << mawar[i].studentid << setw(15) << mawar[i].name << setw(10) << mawar[i].gpa << setw(10)
+			<<mawar[i].subjects[0] << setw(10) <<mawar[i].subjects[1] << setw(10) << mawar[i].subjects[2]
+			<< setw(10) << mawar[i].subjects[3] << setw(10)<< mawar[i].subjects[4] << endl;
+	}
+
+	return 0;
+}
+
+/*
+Text File(Studentdetails.txt):
+31910187 RecaSeng 4.00 81 82 83 84 85
+31910119 KrystalYong 4.00 80 85 83 82 81
+31910447 TengXian 4.00 87 88 80 81 83
+31910353 XueWing 4.00 85 83 84 82 81
+31910441 Wenni 4.00 81 82 85 86 83
+*/
