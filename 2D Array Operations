@@ -1,0 +1,102 @@
+/*
+2D Array Operations
+Write a program that creates a two-dimensional array initialized with test data. Use any
+data type you wish. The program should have the following functions:
+• getTotal . This function should accept a two-dimensional array as its argument and
+return the total of all the values in the array.
+• getAverage . This function should accept a two-dimensional array as its argument
+and return the average of all the values in the array.
+• getRowTotal . This function should accept a two-dimensional array as its first argument
+and an integer as its second argument. The second argument should be the
+subscript of a row in the array. The function should return the total of the values in
+the specified row.
+• getColumnTotal . This function should accept a two-dimensional array as its first
+argument and an integer as its second argument. The second argument should be the
+subscript of a column in the array. The function should return the total of the values
+in the specified column.
+• getHighestInRow . This function should accept a two-dimensional array as its first
+argument and an integer as its second argument. The second argument should be the
+subscript of a row in the array. The function should return the highest value in the
+specified row of the array.
+• getLowestInRow . This function should accept a two-dimensional array as its first
+argument and an integer as its second argument. The second argument should be the
+subscript of a row in the array. The function should return the lowest value in the
+specified row of the array.
+Demonstrate each of the functions in this program.*/
+
+#include <iostream>
+using namespace std;
+int getTotal(int array[5][4]);
+double getAverage(int array[5][4]);
+int getRowTotal(int array[], int );
+int getColumnTotal(int array[0], int);
+
+int main()
+{
+	int array[5][4] = { {18,18,16,18},
+						{14,16,16,16},
+						{14,16,17,16},
+						{15,16,15,16},
+						{14,19,18,16}
+						};
+	int total = getTotal(array);
+	double average = getAverage(array);
+	int rowTotal = getRowTotal(array[0], 4);
+	int columnTotal = getColumnTotal(array[4][0], 5);
+	cout << total << endl;
+	cout << average << endl;
+	cout << rowTotal << endl;
+	return 0;
+}
+
+int getTotal(int array[5][4])
+{
+	int total = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			total += array[i][j];
+		}
+	}
+
+	return total;
+}
+
+double getAverage(int array[5][4])
+{
+	double average = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			average += array[i][j];
+		}
+	}
+
+	average = average / 20.00;
+
+	return average;
+}
+
+int getRowTotal(int array[], int subscript)
+{
+	int total = 0;
+	for (int i = 0; i < subscript; i++)
+	{
+		total += array[i];
+	}
+
+	return total;
+}
+
+int getColumnTotal(int array[], int subscript)
+{
+	int total = 0;
+	for (int i = 0; i < subscript; i++)
+	{
+		total += array[i];
+	}
+
+	return total;
+}
